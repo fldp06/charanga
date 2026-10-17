@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charanga Último Acorde | Espectáculo Musical a Pie de Calle</title>
+    <meta name="description" content="Web oficial de la Charanga Último Acorde. Espectáculo musical a pie de calle, fiestas patronales, pasacalles, peñas y todo tipo de eventos.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Anton (Impactante/Festival) y Plus Jakarta Sans (Lectura moderna) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charanga: {
+                            yellow: '#FCE043',      // Amarillo exacto de vuestro logo
+                            yellowHover: '#F5D014', // Amarillo intenso para botones
+                            black: '#0A0A0A',       // Negro profundo principal
+                            dark: '#141414',        // Negro secundario para tarjetas
+                            card: '#1C1C1C',        // Gris carbón para bloques
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Anton', 'sans-serif'],
+                        serifLogo: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '6px 6px 0px 0px #FCE043',
+                        'brutal-black': '6px 6px 0px 0px #0A0A0A',
+                        'glow': '0 0 25px rgba(252, 224, 67, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados y animaciones */
+        body {
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        /* Textura sutil de ruido y patrón musical */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(252, 224, 67, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* Franja diagonal estilo New Tocados / Festival */
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+        }
+
+        /* Barras de ecualizador animadas */
+        @keyframes equalize {
+            0%, 100% { height: 8px; }
+            50% { height: 28px; }
+        }
+        .eq-bar-1 { animation: equalize 0.8s ease-in-out infinite; }
+        .eq-bar-2 { animation: equalize 0.6s ease-in-out infinite 0.2s; }
+        .eq-bar-3 { animation: equalize 0.9s ease-in-out infinite 0.4s; }
+        .eq-bar-4 { animation: equalize 0.7s ease-in-out infinite 0.1s; }
+
+        /* Giro suave para el borde o detalle del logo */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        /* Scrollbar personalizada amarilla y negra */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FCE043;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #eab308;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-charanga-yellow selection:text-charanga-black">
+
+    <!-- ==========================================
+         DEFINICIÓN REUTILIZABLE DEL LOGO OFICIAL SVG
+         (Fiel al logo subido de Charanga Último Acorde)
+         Nota: Si prefieres usar tu archivo de imagen directamente,
+         puedes sustituir los <svg class="logo-svg"> por <img src="logo.png">
+    =========================================== -->
+    <svg style="display: none;">
+        <symbol id="ultimo-acorde-logo" viewBox="0 0 300 300">
+            <!-- Fondo circular amarillo oficial -->
+            <circle cx="150" cy="150" r="146" fill="#FCE043" />
+            
+            <!-- Doble anillo exterior negro -->
+            <circle cx="150" cy="150" r="138" fill="none" stroke="#0A0A0A" stroke-width="5.5" />
+            <circle cx="150" cy="150" r="130" fill="none" stroke="#0A0A0A" stroke-width="2.5" />
+            
+            <!-- Doble anillo interior negro -->
+            <circle cx="150" cy="150" r="88" fill="none" stroke="#0A0A0A" stroke-width="4.5" />
+            <circle cx="150" cy="150" r="82" fill="none" stroke="#0A0A0A" stroke-width="2" />
+
+            <!-- Guías invisibles para el texto curvo -->
+            <defs>
+                <path id="textArcTop" d="M 42,150 A 108,108 0 1,1 258,150" />
+                <path id="textArcBottom" d="M 248,162 A 102,102 0 0,1 52,162" />
+            </defs>
+
+            <!-- Texto Superior: ÚLTIMO ACORDE -->
+            <text fill="#0A0A0A" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="25" letter-spacing="2.5">
+                <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">ÚLTIMO ACORDE</textPath>
+            </text>
+
+            <!-- Texto Inferior: CHARANGA -->
+            <text fill="#0A0A0A" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="21" letter-spacing="3">
+                <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">CHARANGA</textPath>
+            </text>
+
+            <!-- Pentagrama Izquierdo con 3 redondas -->
+            <g stroke="#0A0A0A" stroke-width="2.8">
+                <line x1="14" y1="152" x2="62" y2="152" />
+                <line x1="15" y1="168" x2="64" y2="168" />
+                <line x1="18" y1="184" x2="68" y2="184" />
+                <ellipse cx="38" cy="152" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+                <ellipse cx="39" cy="168" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+                <ellipse cx="41" cy="184" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+            </g>
+
+            <!-- Pentagrama Derecho con 3 redondas -->
+            <g stroke="#0A0A0A" stroke-width="2.8">
+                <line x1="238" y1="152" x2="286" y2="152" />
+                <line x1="236" y1="168" x2="285" y2="168" />
+                <line x1="232" y1="184" x2="282" y2="184" />
+                <ellipse cx="262" cy="152" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+                <ellipse cx="261" cy="168" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+                <ellipse cx="259" cy="184" rx="9" ry="5.5" fill="none" stroke-width="3.2"/>
+            </g>
+
+            <!-- Silueta Músico Izquierdo (Trompetista) -->
+            <g fill="#0A0A0A">
+                <!-- Cabeza/Sombrero -->
+                <circle cx="112" cy="112" r="7" />
+                <!-- Torso inclinado hacia atrás con energía -->
+                <path d="M105,120 C102,132 106,146 112,155 L110,178 L120,178 L124,155 L118,120 Z" />
+                <!-- Brazos sujetando trompeta -->
+                <path d="M115,122 L128,114 L125,128 L115,128 Z" />
+                <!-- Trompeta -->
+                <polygon points="122,114 143,104 145,99 148,109 143,107 123,117" />
+            </g>
+
+            <!-- Silueta Músico Derecho (Saxofonista) -->
+            <g fill="#0A0A0A">
+                <!-- Cabeza -->
+                <circle cx="188" cy="113" r="7" />
+                <!-- Torso y piernas en movimiento -->
+                <path d="M183,121 L178,152 L175,175 L184,177 L190,155 L198,175 L206,172 L195,148 L194,121 Z" />
+                <!-- Saxofón curvo -->
+                <path d="M180,115 L167,128 C163,133 165,140 171,137 L176,130" fill="none" stroke="#0A0A0A" stroke-width="4.5" stroke-linecap="round" />
+                <circle cx="172" cy="130" r="4.5" />
+            </g>
+
+            <!-- Iconos Reproductor Multimedia (|<<   |>   >>|) -->
+            <g fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round">
+                <!-- Anterior |<< -->
+                <rect x="104" y="198" width="3.5" height="16" rx="1" fill="#0A0A0A"/>
+                <polygon points="122,197 109,206 122,215" />
+                <!-- Play |> -->
+                <polygon points="141,192 165,206 141,220" stroke-width="3.5" />
+                <!-- Siguiente >>| -->
+                <polygon points="178,197 191,206 178,215" />
+                <rect x="193" y="198" width="3.5" height="16" rx="1" fill="#0A0A0A"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN FIJA (STICKY NAVBAR)
+    =========================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-charanga-black/90 backdrop-blur-md border-b border-charanga-yellow/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo y Nombre -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <!-- Si prefieres tu archivo PNG local, cambia este <svg> por: <img src="logo.png" alt="Logo Charanga Último Acorde" class="w-14 h-14 rounded-full"> -->
+                    <svg class="w-14 h-14 rounded-full shadow-glow transition-transform duration-300 group-hover:scale-105">
+                        <use href="#ultimo-acorde-logo"></use>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl tracking-wider text-charanga-yellow leading-none">ÚLTIMO ACORDE</span>
+                        <span class="text-[11px] font-bold tracking-[0.25em] text-white/80 uppercase mt-0.5">Charanga Oficial</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces Escritorio (Estructura inspirada en New Tocados) -->
+                <nav class="hidden lg:flex items-center gap-7">
+                    <a href="#inicio" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">Inicio</a>
+                    <a href="#presentacion" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">Presentación</a>
+                    <a href="#espectaculo" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">El Show</a>
+                    <a href="#trayectoria" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">Trayectoria</a>
+                    <a href="#multimedia" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">Multimedia</a>
+                    <a href="#contacto" class="text-sm font-bold uppercase tracking-wider text-white hover:text-charanga-yellow transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Redes Sociales + CTA Contratación (Escritorio) -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" aria-label="Instagram Charanga Último Acorde"
+                       class="w-10 h-10 rounded-full bg-charanga-card border border-white/15 flex items-center justify-center text-white hover:bg-charanga-yellow hover:text-charanga-black hover:border-charanga-yellow transition-all">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" aria-label="TikTok Charanga Último Acorde"
+                       class="w-10 h-10 rounded-full bg-charanga-card border border-white/15 flex items-center justify-center text-white hover:bg-charanga-yellow hover:text-charanga-black hover:border-charanga-yellow transition-all">
+                        <i class="fa-brands fa-tiktok text-base"></i>
+                    </a>
+                    <a href="#contacto" class="ml-2 bg-charanga-yellow hover:bg-charanga-yellowHover text-charanga-black font-extrabold text-sm uppercase tracking-wider px-5 py-2.5 rounded-full transition-all transform hover:-translate-y-0.5 shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-fire"></i> Contratar
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden w-11 h-11 rounded-xl bg-charanga-card border border-charanga-yellow/40 text-charanga-yellow flex items-center justify-center text-xl focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-charanga-dark border-b-2 border-charanga-yellow px-6 pt-4 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow border-b border-white/5">Inicio</a>
+            <a href="#presentacion" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow border-b border-white/5">Presentación</a>
+            <a href="#espectaculo" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow border-b border-white/5">El Espectáculo</a>
+            <a href="#trayectoria" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow border-b border-white/5">Trayectoria</a>
+            <a href="#multimedia" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow border-b border-white/5">Multimedia</a>
+            <a href="#contacto" class="mobile-link block py-2 text-base font-bold uppercase tracking-wider text-white hover:text-charanga-yellow">Contacto</a>
+            
+            <div class="pt-4 flex items-center justify-between gap-4 border-t border-white/10">
+                <div class="flex items-center gap-3">
+                    <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-xl font-bold">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-xl font-bold">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+                <a href="#contacto" class="mobile-link flex-1 text-center bg-charanga-yellow text-charanga-black font-extrabold uppercase py-3 rounded-xl text-sm tracking-wider">
+                    ¡Pide Presupuesto!
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         1. HERO SECTION (INICIO)
+    =========================================== -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Imagen/Vídeo de fondo (CAMBIAR AQUÍ POR FOTO DE PORTADA O VÍDEO DE LA CHARANGA) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Ambiente de fiesta Charanga Último Acorde" 
+                 class="w-full h-full object-cover object-center scale-105 filter brightness-50 contrast-125"
+                 onerror="this.src='https://placehold.co/1920x1080/0A0A0A/FCE043?text=CHARANGA+ULTIMO+ACORDE'">
+            <!-- Degradado amarillo y negro encima de la imagen -->
+            <div class="absolute inset-0 bg-gradient-to-b from-charanga-black/80 via-charanga-black/65 to-charanga-black"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(252,224,67,0.15)_0%,transparent_70%)]"></div>
+        </div>
+
+        <!-- Contenido Central Hero -->
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center flex flex-col items-center">
+            
+            <!-- Emblema Circular Principal Animado -->
+            <div class="mb-6 relative animate-float">
+                <div class="absolute -inset-2 rounded-full bg-charanga-yellow/30 blur-xl"></div>
+                <!-- CAMBIAR AQUÍ SI QUIERES USAR TU ARCHIVO: <img src="logo.png" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full relative z-10 border-4 border-charanga-black shadow-2xl"> -->
+                <svg class="w-36 h-36 sm:w-44 sm:h-44 rounded-full relative z-10 shadow-glow">
+                    <use href="#ultimo-acorde-logo"></use>
+                </svg>
+            </div>
+
+            <!-- Etiqueta Superior con Ecualizador -->
+            <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-charanga-yellow/15 border border-charanga-yellow/50 text-charanga-yellow text-xs sm:text-sm font-extrabold uppercase tracking-widest mb-5">
+                <span class="flex items-end gap-0.5 h-4">
+                    <span class="w-1 bg-charanga-yellow eq-bar-1"></span>
+                    <span class="w-1 bg-charanga-yellow eq-bar-2"></span>
+                    <span class="w-1 bg-charanga-yellow eq-bar-3"></span>
+                    <span class="w-1 bg-charanga-yellow eq-bar-4"></span>
+                </span>
+                Música en Directo · Show · 100% Fiesta
+            </div>
+
+            <!-- Título Gigante -->
+            <h1 class="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight uppercase leading-none text-white drop-shadow-lg">
+                CHARANGA <span class="text-charanga-yellow">ÚLTIMO ACORDE</span>
+            </h1>
+
+            <!-- Subtítulo estilo New Tocados -->
+            <p class="mt-4 font-display text-xl sm:text-3xl md:text-4xl tracking-widest uppercase text-white/90 bg-charanga-black/70 px-6 py-2 border-l-4 border-r-4 border-charanga-yellow">
+                ESPECTÁCULO MUSICAL A PIE DE CALLE
+            </p>
+
+            <p class="mt-5 max-w-2xl text-base sm:text-lg text-gray-300 font-medium">
+                Energía sin límites, los temazos más cañeros del momento y una puesta en escena explosiva para que tu fiesta, peña o pasacalles sea inolvidable hasta el último acorde.
+            </p>
+
+            <!-- Botones de Acción (CTAs) -->
+            <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-charanga-yellow hover:bg-charanga-yellowHover text-charanga-black font-black text-base uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-brutal-black flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Contratar Ahora
+                </a>
+                <a href="#multimedia" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-charanga-card/90 hover:bg-white hover:text-charanga-black text-white font-extrabold text-base uppercase tracking-wider border-2 border-charanga-yellow transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-circle-play text-charanga-yellow group-hover:text-charanga-black text-lg"></i> Ver Vídeos y Fotos
+                </a>
+            </div>
+
+            <!-- Accesos directos a RRSS en el Hero -->
+            <div class="mt-10 flex items-center gap-6 text-sm font-bold text-gray-300">
+                <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-charanga-yellow transition-colors">
+                    <i class="fa-brands fa-instagram text-charanga-yellow text-xl"></i> @charanga_ultimoacorde
+                </a>
+                <span class="text-charanga-yellow">•</span>
+                <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-charanga-yellow transition-colors">
+                    <i class="fa-brands fa-tiktok text-charanga-yellow text-lg"></i> @charanga.ultimo.a
+                </a>
+            </div>
+        </div>
+
+        <!-- Cinta amarilla decorativa inferior -->
+        <div class="absolute bottom-0 left-0 right-0 bg-charanga-yellow text-charanga-black py-2.5 overflow-hidden border-y-2 border-charanga-black">
+            <div class="flex whitespace-nowrap animate-pulse font-display text-sm sm:text-base tracking-widest uppercase justify-around">
+                <span>★ CHARANGA ÚLTIMO ACORDE</span>
+                <span>★ PASACALLES Y FIESTAS PATRONALES</span>
+                <span class="hidden sm:inline">★ REPERTORIO 100% FIESTERO</span>
+                <span class="hidden md:inline">★ SHOW EN DIRECTO</span>
+                <span>★ ¡HASTA QUE EL CUERPO AGUANTE!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         2. PRESENTACIÓN (QUIÉNES SOMOS)
+    =========================================== -->
+    <section id="presentacion" class="py-24 bg-charanga-black bg-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Texto de Presentación -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-block bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded">
+                        01 / Presentación
+                    </div>
+                    
+                    <h2 class="font-display text-4xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+                        MÁS QUE UNA CHARANGA, <span class="text-charanga-yellow">UNA FIESTA RODANTE</span>
+                    </h2>
+
+                    <!-- Texto inspirado en la estructura de New Tocados pero personalizado para Último Acorde -->
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        <strong class="text-charanga-yellow">Charanga Último Acorde</strong> nace de la unión de jóvenes músicos apasionados por el viento, la percusión y, sobre todo, por liar la fiesta allí donde vamos. Somos un proyecto de animación musical callejera diseñado para que nadie se quede mirando desde la acera.
+                    </p>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Fusionamos la potencia instrumental de una <em>brass band</em> moderna con el espíritu más gamberro, cercano y festivo de la charanga tradicional. Coreografías, humor, megafonía de ambiente y una conexión brutal con el público hacen que cada actuación sea única desde el primer compás hasta el <strong class="text-white underline decoration-charanga-yellow decoration-2">último acorde</strong>.
+                    </p>
+
+                    <!-- Cifras / Puntos Clave -->
+                    <div class="grid grid-cols-3 gap-4 pt-4">
+                        <div class="bg-charanga-card border border-charanga-yellow/30 p-4 rounded-xl text-center">
+                            <span class="block font-display text-3xl sm:text-4xl text-charanga-yellow">100%</span>
+                            <span class="text-xs sm:text-sm text-gray-300 font-semibold uppercase">Voz y Viento en Vivo</span>
+                        </div>
+                        <div class="bg-charanga-card border border-charanga-yellow/30 p-4 rounded-xl text-center">
+                            <span class="block font-display text-3xl sm:text-4xl text-charanga-yellow">TODO</span>
+                            <span class="text-xs sm:text-sm text-gray-300 font-semibold uppercase">Terreno y Eventos</span>
+                        </div>
+                        <div class="bg-charanga-card border border-charanga-yellow/30 p-4 rounded-xl text-center">
+                            <span class="block font-display text-3xl sm:text-4xl text-charanga-yellow">+MAX</span>
+                            <span class="text-xs sm:text-sm text-gray-300 font-semibold uppercase">Interacción Público</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Composición Visual / Foto de Grupo -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-lg lg:max-w-none">
+                        <!-- Marco amarillo desplazado (Estilo Brutalista/Festival) -->
+                        <div class="absolute inset-0 translate-x-4 translate-y-4 bg-charanga-yellow rounded-2xl"></div>
+                        
+                        <!-- CAMBIAR AQUÍ POR FOTO DE GRUPO DE LA CHARANGA -->
+                        <div class="relative rounded-2xl overflow-hidden border-4 border-charanga-black bg-charanga-dark shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Músicos de la Charanga Último Acorde" 
+                                 class="w-full h-[420px] sm:h-[480px] object-cover"
+                                 onerror="this.src='https://placehold.co/800x600/141414/FCE043?text=Foto+Grupo+Ultimo+Acorde'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-charanga-black/90 backdrop-blur-md p-4 rounded-xl border border-charanga-yellow/40">
+                                <div>
+                                    <p class="font-display text-xl text-charanga-yellow uppercase tracking-wider">Charanga Último Acorde</p>
+                                    <p class="text-xs text-gray-300">Viento, percusión y espectáculo garantizado</p>
+                                </div>
+                                <svg class="w-12 h-12 rounded-full shrink-0">
+                                    <use href="#ultimo-acorde-logo"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         3. EL ESPECTÁCULO (QUÉ OFRECEMOS)
+    =========================================== -->
+    <section id="espectaculo" class="py-24 bg-charanga-yellow text-charanga-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Cabecera Sección -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block bg-charanga-black text-charanga-yellow font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-3">
+                    02 / El Espectáculo
+                </div>
+                <h2 class="font-display text-4xl sm:text-6xl uppercase tracking-wide text-charanga-black leading-none">
+                    UN SHOW DISEÑADO PARA QUE <span class="underline decoration-4">NADIE PARE DE SALTAR</span>
+                </h2>
+                <p class="mt-4 text-charanga-black/80 text-base sm:text-lg font-semibold">
+                    Un espectáculo versátil con la mejor música del momento (rock, electrónica, reggaetón, pachanga, hits de los 80/90 y los himnos clásicos de charanga) donde el público es el verdadero protagonista.
+                </p>
+            </div>
+
+            <!-- Tarjetas de Tipos de Eventos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Tarjeta 1 -->
+                <div class="bg-charanga-black text-white p-7 rounded-2xl border-2 border-charanga-black shadow-brutal-black hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-drum"></i>
+                        </div>
+                        <h3 class="font-display text-2xl tracking-wider text-charanga-yellow uppercase mb-3">Fiestas Patronales y Peñas</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Animación inagotable para comisiones de fiestas, concentraciones de peñas, chupinazos, rondas de bares y desfiles multitudinarios.
+                        </p>
+                    </div>
+                    <span class="mt-6 inline-block text-xs font-extrabold uppercase tracking-widest text-charanga-yellow">★ Máxima Potencia</span>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-charanga-black text-white p-7 rounded-2xl border-2 border-charanga-black shadow-brutal-black hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-beer-mug-empty"></i>
+                        </div>
+                        <h3 class="font-display text-2xl tracking-wider text-charanga-yellow uppercase mb-3">Pasacalles y Vermuts</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Llevamos la música a pie de calle levantando cada terraza y cada plaza. El formato ideal para sesiones vermut, tardeos y pasacalles dinámicos.
+                        </p>
+                    </div>
+                    <span class="mt-6 inline-block text-xs font-extrabold uppercase tracking-widest text-charanga-yellow">★ 100% Callejero</span>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-charanga-black text-white p-7 rounded-2xl border-2 border-charanga-black shadow-brutal-black hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="font-display text-2xl tracking-wider text-charanga-yellow uppercase mb-3">Bodas, Despedidas y Privados</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            ¿Quieres sorprender a los invitados en el cóctel, barra libre o liar una despedida épica? Adaptamos el repertorio a vuestros gustos.
+                        </p>
+                    </div>
+                    <span class="mt-6 inline-block text-xs font-extrabold uppercase tracking-widest text-charanga-yellow">★ Show a Medida</span>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="bg-charanga-black text-white p-7 rounded-2xl border-2 border-charanga-black shadow-brutal-black hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="font-display text-2xl tracking-wider text-charanga-yellow uppercase mb-3">Festivales y Escenario</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Puesta en escena coreografiada, medleys explosivos de electrónica, rock e indie para concursos de charangas y actuaciones en escenario.
+                        </p>
+                    </div>
+                    <span class="mt-6 inline-block text-xs font-extrabold uppercase tracking-widest text-charanga-yellow">★ Puro Espectáculo</span>
+                </div>
+
+            </div>
+
+            <!-- Píldoras de Géneros Musicales -->
+            <div class="mt-12 bg-charanga-black/95 text-white p-6 sm:p-8 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div class="text-center lg:text-left">
+                    <h4 class="font-display text-2xl text-charanga-yellow uppercase tracking-wide">¿Qué suena en nuestro repertorio?</h4>
+                    <p class="text-sm text-gray-300">Arreglos propios actualizados cada temporada para enganchar a todas las edades.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2.5">
+                    <span class="px-4 py-2 rounded-full bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-wider">Hits Actuales & Urban</span>
+                    <span class="px-4 py-2 rounded-full bg-white/10 text-white border border-charanga-yellow/40 font-bold text-xs uppercase tracking-wider">Techno & Eurodance Brass</span>
+                    <span class="px-4 py-2 rounded-full bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-wider">Rock & Ska Fiestero</span>
+                    <span class="px-4 py-2 rounded-full bg-white/10 text-white border border-charanga-yellow/40 font-bold text-xs uppercase tracking-wider">Pop Español & Indie</span>
+                    <span class="px-4 py-2 rounded-full bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-wider">Clásicos de Charanga</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         4. TRAYECTORIA (INSPIRADO EN NEW TOCADOS)
+    =========================================== -->
+    <section id="trayectoria" class="py-24 bg-charanga-dark relative border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-3">
+                    03 / Nuestra Huella
+                </div>
+                <h2 class="font-display text-4xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+                    TRAYECTORIA Y <span class="text-charanga-yellow">EXPERIENCIA CALLEJERA</span>
+                </h2>
+                <p class="mt-4 text-gray-400 text-base sm:text-lg">
+                    Recorremos plazas, calles y recintos feriales dejando huella en cada actuación. (Puedes personalizar esta lista con los pueblos y fiestas donde habéis tocado).
+                </p>
+            </div>
+
+            <!-- 3 Columnas estilo Trayectoria New Tocados -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Columna 1: Fiestas y Localidades -->
+                <div class="bg-charanga-card rounded-2xl p-8 border border-white/10 hover:border-charanga-yellow transition-colors">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                        <i class="fa-solid fa-map-location-dot text-2xl text-charanga-yellow"></i>
+                        <h3 class="font-display text-2xl tracking-wider uppercase text-white">Fiestas y Ciudades</h3>
+                    </div>
+                    <!-- EDITAR AQUÍ VUESTROS PUEBLOS Y CIUDADES -->
+                    <ul class="space-y-3 text-gray-300 text-sm sm:text-base font-medium">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Fiestas Patronales y Verbenas de Verano</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Carnavales y Desfiles Callejeros</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Fiestas de Primavera y Romerías</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Cabalgatas y Pasacalles Oficiales</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Semanas Culturales y Juveniles</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 2: Peñas y Asociaciones -->
+                <div class="bg-charanga-card rounded-2xl p-8 border border-white/10 hover:border-charanga-yellow transition-colors">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                        <i class="fa-solid fa-users-rays text-2xl text-charanga-yellow"></i>
+                        <h3 class="font-display text-2xl tracking-wider uppercase text-white">Peñas y Eventos</h3>
+                    </div>
+                    <!-- EDITAR AQUÍ VUESTRAS PEÑAS O EVENTOS DESTACADOS -->
+                    <ul class="space-y-3 text-gray-300 text-sm sm:text-base font-medium">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Concentraciones de Peñas Festeras</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Rondas de Bares y Vermuts Toreros</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Fiestas Universitarias y Paellas</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Despedidas de Soltero/a y Bodas</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Aniversarios de Comisiones y Quintos</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Sello Último Acorde -->
+                <div class="bg-charanga-card rounded-2xl p-8 border border-white/10 hover:border-charanga-yellow transition-colors">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                        <i class="fa-solid fa-star text-2xl text-charanga-yellow"></i>
+                        <h3 class="font-display text-2xl tracking-wider uppercase text-white">Sello Último Acorde</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300 text-sm sm:text-base font-medium">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Puntualidad, Seriedad y Trato Directo</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Juegos Musicales y Coreografías</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Formación Completa de Viento y Percusión</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Disponibilidad para Desplazamientos</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-charanga-yellow"></i> Energía Intacta hasta el Último Minuto</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Tira de 4 imágenes de ambiente (Igual que la franja inferior de Trayectoria en New Tocados) -->
+            <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- CAMBIAR ESTAS 4 IMÁGENES POR FOTOS VUESTRAS EN ACCIÓN -->
+                <div class="overflow-hidden rounded-xl border-2 border-charanga-yellow/30 h-48 group">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" alt="Actuación 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-xl border-2 border-charanga-yellow/30 h-48 group">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Actuación 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-xl border-2 border-charanga-yellow/30 h-48 group">
+                    <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" alt="Actuación 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-xl border-2 border-charanga-yellow/30 h-48 group">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=600&q=80" alt="Actuación 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         5. MULTIMEDIA (VÍDEOS, REELS Y FOTOS)
+    =========================================== -->
+    <section id="multimedia" class="py-24 bg-charanga-black bg-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Cabecera y Pestañas de Filtro -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div class="inline-block bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-3">
+                        04 / Multimedia
+                    </div>
+                    <h2 class="font-display text-4xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+                        ASÍ NOS LAS GASTAMOS <span class="text-charanga-yellow">EN DIRECTO</span>
+                    </h2>
+                </div>
+
+                <!-- Botones Filtro Multimedia -->
+                <div class="flex bg-charanga-card p-1.5 rounded-xl border border-white/10 self-start">
+                    <button onclick="switchMediaTab('all')" id="tab-all" class="media-tab bg-charanga-yellow text-charanga-black font-extrabold text-xs sm:text-sm uppercase px-4 py-2.5 rounded-lg transition-all">
+                        Todo
+                    </button>
+                    <button onclick="switchMediaTab('videos')" id="tab-videos" class="media-tab text-gray-300 hover:text-white font-bold text-xs sm:text-sm uppercase px-4 py-2.5 rounded-lg transition-all">
+                        <i class="fa-solid fa-video mr-1"></i> Vídeos / Reels
+                    </button>
+                    <button onclick="switchMediaTab('fotos')" id="tab-fotos" class="media-tab text-gray-300 hover:text-white font-bold text-xs sm:text-sm uppercase px-4 py-2.5 rounded-lg transition-all">
+                        <i class="fa-solid fa-camera mr-1"></i> Fotos
+                    </button>
+                </div>
+            </div>
+
+            <!-- SUBSECCIÓN A: GRID DE VÍDEOS (Estilo New Tocados + TikTok/Reels) -->
+            <div id="media-videos-block" class="mb-16">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-display text-2xl tracking-wider uppercase text-charanga-yellow flex items-center gap-2">
+                        <i class="fa-solid fa-circle-play"></i> Vídeos Destacados & TikToks
+                    </h3>
+                    <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-bold text-charanga-yellow hover:underline">
+                        Ver todos en TikTok →
+                    </a>
+                </div>
+
+                <!-- NOTA PARA TUS VÍDEOS: 
+                     Puedes sustituir cualquiera de estas 3 tarjetas por un archivo .mp4 local usando:
+                     <video controls class="w-full h-64 object-cover rounded-xl"><source src="mi-video.mp4" type="video/mp4"></video>
+                     O pegar un <iframe> de YouTube / TikTok. -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Vídeo Card 1 -->
+                    <div class="bg-charanga-card rounded-2xl overflow-hidden border border-white/10 hover:border-charanga-yellow transition-all group">
+                        <div class="relative h-64 overflow-hidden bg-black">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Vídeo Pasacalles" class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" class="w-16 h-16 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl shadow-glow transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </a>
+                            </div>
+                            <span class="absolute top-3 left-3 bg-charanga-black/80 text-charanga-yellow text-xs font-bold px-3 py-1 rounded-full border border-charanga-yellow/40">
+                                <i class="fa-brands fa-instagram mr-1"></i> Reel en Directo
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-display text-xl uppercase text-white tracking-wide">Pasacalles Nocturno a Tope</h4>
+                            <p class="text-gray-400 text-sm mt-1">La plaza entera saltando con nuestro medley fiestero. ¡Mira el ambiente en nuestro Instagram!</p>
+                        </div>
+                    </div>
+
+                    <!-- Vídeo Card 2 -->
+                    <div class="bg-charanga-card rounded-2xl overflow-hidden border border-white/10 hover:border-charanga-yellow transition-all group">
+                        <div class="relative h-64 overflow-hidden bg-black">
+                            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=800&q=80" alt="Vídeo TikTok Charanga" class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" class="w-16 h-16 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl shadow-glow transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </a>
+                            </div>
+                            <span class="absolute top-3 left-3 bg-charanga-black/80 text-charanga-yellow text-xs font-bold px-3 py-1 rounded-full border border-charanga-yellow/40">
+                                <i class="fa-brands fa-tiktok mr-1"></i> TikTok Oficial
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-display text-xl uppercase text-white tracking-wide">Cuando suena el Último Acorde</h4>
+                            <p class="text-gray-400 text-sm mt-1">Nuestros mejores momentos de humor, coreografías y temazos en @charanga.ultimo.a.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vídeo Card 3 -->
+                    <div class="bg-charanga-card rounded-2xl overflow-hidden border border-white/10 hover:border-charanga-yellow transition-all group">
+                        <div class="relative h-64 overflow-hidden bg-black">
+                            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80" alt="Vídeo Vermut y Peñas" class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" class="w-16 h-16 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-2xl shadow-glow transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </a>
+                            </div>
+                            <span class="absolute top-3 left-3 bg-charanga-black/80 text-charanga-yellow text-xs font-bold px-3 py-1 rounded-full border border-charanga-yellow/40">
+                                <i class="fa-solid fa-fire mr-1"></i> Show Callejero
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-display text-xl uppercase text-white tracking-wide">Concentración de Peñas</h4>
+                            <p class="text-gray-400 text-sm mt-1">Viento metal y percusión al 200% en plena sesión vermut. Haz clic para verlo.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SUBSECCIÓN B: GALERÍA DE FOTOS INTERACTIVA (CON LIGHTBOX) -->
+            <div id="media-fotos-block">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-display text-2xl tracking-wider uppercase text-charanga-yellow flex items-center gap-2">
+                        <i class="fa-solid fa-images"></i> Galería Fotográfica (Haz clic para ampliar)
+                    </h3>
+                </div>
+
+                <!-- CAMBIAR AQUÍ LAS RUTAS src="..." POR VUESTRAS FOTOS DE ACTUACIONES -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80', 'Sección de metales en directo - Charanga Último Acorde')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=800&q=80" alt="Metales en directo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Sección de metales en directo</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80', 'Ambiente nocturno en fiestas patronales')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80" alt="Público entregado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Ambiente nocturno en fiestas</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80', 'Potencia instrumental en cada pasacalles')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80" alt="Instrumentos de viento" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Potencia en cada pasacalles</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80', 'Fin de fiesta inolvidable con todo el público')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Fin de fiesta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Fin de fiesta inolvidable</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80', 'Ritmo y percusión sin descanso')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Percusión y ritmo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Ritmo y percusión sin descanso</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=80', 'Espectáculo en escenario y concentraciones')" 
+                         class="cursor-pointer group relative h-72 rounded-2xl overflow-hidden border-2 border-white/10 hover:border-charanga-yellow transition-all">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80" alt="Escenario Charanga" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charanga-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-charanga-yellow font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-plus"></i> Espectáculo y concentraciones</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. BANNER REDES SOCIALES (INSTAGRAM & TIKTOK)
+    =========================================== -->
+    <section class="py-16 bg-charanga-yellow text-charanga-black border-y-4 border-charanga-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                
+                <div class="text-center lg:text-left max-w-xl">
+                    <span class="inline-block bg-charanga-black text-charanga-yellow font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-2">
+                        Síguenos la pista
+                    </span>
+                    <h2 class="font-display text-4xl sm:text-5xl uppercase tracking-wide leading-none">
+                        NO TE PIERDAS NI UN SOLO BOLO EN NUESTRAS REDES
+                    </h2>
+                    <p class="mt-2 font-semibold text-charanga-black/80 text-base">
+                        Subimos vídeos, fechas confirmadas, directos y las mejores liadas de cada fin de semana.
+                    </p>
+                </div>
+
+                <!-- Botones Gigantes a Instagram y TikTok -->
+                <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                    <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-center gap-4 bg-charanga-black text-white hover:bg-charanga-dark px-7 py-4 rounded-2xl shadow-brutal-black transition-transform hover:-translate-y-1">
+                        <i class="fa-brands fa-instagram text-3xl text-charanga-yellow"></i>
+                        <div class="text-left">
+                            <span class="block text-[11px] uppercase tracking-widest text-gray-400 font-bold">Síguenos en Instagram</span>
+                            <span class="font-display text-xl tracking-wide text-charanga-yellow">@charanga_ultimoacorde</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-center gap-4 bg-charanga-black text-white hover:bg-charanga-dark px-7 py-4 rounded-2xl shadow-brutal-black transition-transform hover:-translate-y-1">
+                        <i class="fa-brands fa-tiktok text-3xl text-charanga-yellow"></i>
+                        <div class="text-left">
+                            <span class="block text-[11px] uppercase tracking-widest text-gray-400 font-bold">Síguenos en TikTok</span>
+                            <span class="font-display text-xl tracking-wide text-charanga-yellow">@charanga.ultimo.a</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         7. CONTACTO Y CONTRATACIÓN (ESTILO NEW TOCADOS)
+    =========================================== -->
+    <section id="contacto" class="py-24 bg-charanga-black bg-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Columna Izquierda: Datos Directos y Redes -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <div class="inline-block bg-charanga-yellow text-charanga-black font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-3">
+                            05 / Contratación Abierta
+                        </div>
+                        <h2 class="font-display text-4xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+                            ¿HABLAMOS? <span class="text-charanga-yellow">RESERVA TU FECHA</span>
+                        </h2>
+                        <p class="mt-4 text-gray-300 text-base leading-relaxed">
+                            Cuéntanos qué día es tu fiesta, qué tipo de evento estás organizando y te preparamos un presupuesto sin compromiso. ¡No te quedes sin fecha!
+                        </p>
+                    </div>
+
+                    <!-- Tarjetas de Contacto Directo (EDITAR TELÉFONO Y EMAIL AQUÍ) -->
+                    <div class="space-y-4">
+                        <a href="tel:+34600000000" class="flex items-center gap-4 p-5 rounded-2xl bg-charanga-card border border-white/10 hover:border-charanga-yellow transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 font-bold">Teléfono / WhatsApp Contratación</span>
+                                <!-- CAMBIAR AQUÍ POR VUESTRO TELÉFONO REAL -->
+                                <span class="font-display text-2xl text-white tracking-wider">+34 600 000 000</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:charangaultimoacorde@gmail.com" class="flex items-center gap-4 p-5 rounded-2xl bg-charanga-card border border-white/10 hover:border-charanga-yellow transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 font-bold">Correo Electrónico</span>
+                                <!-- CAMBIAR AQUÍ POR VUESTRO EMAIL REAL -->
+                                <span class="font-bold text-base sm:text-lg text-white">charangaultimoacorde@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 rounded-2xl bg-charanga-card border border-white/10 hover:border-charanga-yellow transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-charanga-yellow text-charanga-black flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 font-bold">Mensaje Directo (DM)</span>
+                                <span class="font-bold text-base sm:text-lg text-charanga-yellow">@charanga_ultimoacorde</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario de Contacto -->
+                <div class="lg:col-span-7">
+                    <div class="bg-charanga-card p-8 sm:p-10 rounded-3xl border-2 border-charanga-yellow shadow-brutal">
+                        <h3 class="font-display text-3xl uppercase tracking-wide text-charanga-yellow mb-6">
+                            Solicitar Presupuesto
+                        </h3>
+
+                        <form id="contact-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="nombre" class="block text-xs font-extrabold uppercase tracking-wider text-gray-300 mb-2">Nombre y apellidos *</label>
+                                    <input type="text" id="nombre" required placeholder="Ej. Carlos García (Peña El Desfase)"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-charanga-black border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-charanga-yellow">
+                                </div>
+                                <div>
+                                    <label for="telefono" class="block text-xs font-extrabold uppercase tracking-wider text-gray-300 mb-2">Teléfono / WhatsApp *</label>
+                                    <input type="tel" id="telefono" required placeholder="Ej. 612 345 678"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-charanga-black border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-charanga-yellow">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="email" class="block text-xs font-extrabold uppercase tracking-wider text-gray-300 mb-2">Email *</label>
+                                    <input type="email" id="email" required placeholder="tu@email.com"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-charanga-black border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-charanga-yellow">
+                                </div>
+                                <div>
+                                    <label for="evento" class="block text-xs font-extrabold uppercase tracking-wider text-gray-300 mb-2">Tipo de Evento y Fecha aprox.</label>
+                                    <input type="text" id="evento" placeholder="Ej. Fiestas patronales - 15 Agosto"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-charanga-black border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-charanga-yellow">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="comentarios" class="block text-xs font-extrabold uppercase tracking-wider text-gray-300 mb-2">Comentarios (Localidad, horario, dudas...) *</label>
+                                <textarea id="comentarios" rows="4" required placeholder="Cuéntanos dónde es la fiesta, cuántas horas tenéis pensadas y cualquier detalle importante..."
+                                          class="w-full px-4 py-3.5 rounded-xl bg-charanga-black border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-charanga-yellow"></textarea>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="privacidad" required class="mt-1 w-4 h-4 accent-charanga-yellow rounded cursor-pointer">
+                                <label for="privacidad" class="text-xs text-gray-400 cursor-pointer">
+                                    He leído y acepto la <button type="button" onclick="openLegalModal('Política de Privacidad')" class="text-charanga-yellow underline">Política de Privacidad</button> para que Charanga Último Acorde responda a mi solicitud.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-charanga-yellow hover:bg-charanga-yellowHover text-charanga-black font-black text-base uppercase tracking-wider transition-all transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud
+                            </button>
+
+                            <!-- Mensaje de confirmación oculto por defecto -->
+                            <div id="form-feedback" class="hidden p-4 rounded-xl bg-charanga-yellow/20 border border-charanga-yellow text-charanga-yellow text-sm font-bold text-center"></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         8. FOOTER (PIE DE PÁGINA)
+    =========================================== -->
+    <footer class="bg-charanga-dark border-t-2 border-charanga-yellow/40 pt-14 pb-10 text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/10">
+                
+                <!-- Identidad Footer -->
+                <div class="flex items-center gap-4">
+                    <svg class="w-16 h-16 rounded-full shrink-0">
+                        <use href="#ultimo-acorde-logo"></use>
+                    </svg>
+                    <div>
+                        <span class="font-display text-2xl tracking-wider text-charanga-yellow uppercase block">CHARANGA ÚLTIMO ACORDE</span>
+                        <span class="text-xs text-gray-400 uppercase tracking-widest">Espectáculo Musical a Pie de Calle</span>
+                    </div>
+                </div>
+
+                <!-- Navegación rápida -->
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-bold uppercase tracking-wider text-gray-300">
+                    <a href="#inicio" class="hover:text-charanga-yellow">Inicio</a>
+                    <a href="#presentacion" class="hover:text-charanga-yellow">Presentación</a>
+                    <a href="#espectaculo" class="hover:text-charanga-yellow">El Show</a>
+                    <a href="#trayectoria" class="hover:text-charanga-yellow">Trayectoria</a>
+                    <a href="#multimedia" class="hover:text-charanga-yellow">Multimedia</a>
+                    <a href="#contacto" class="hover:text-charanga-yellow">Contacto</a>
+                </div>
+
+                <!-- Iconos Sociales -->
+                <div class="flex items-center gap-3">
+                    <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                       class="w-11 h-11 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-lg hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@charanga.ultimo.a" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
+                       class="w-11 h-11 rounded-full bg-charanga-yellow text-charanga-black flex items-center justify-center text-lg hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enlaces Legales y Copyright -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+                <p>© 2026 <strong class="text-charanga-yellow">Charanga Último Acorde</strong>. Todos los derechos reservados.</p>
+                <div class="flex gap-5">
+                    <button onclick="openLegalModal('Aviso Legal')" class="hover:text-charanga-yellow transition-colors">Aviso Legal</button>
+                    <button onclick="openLegalModal('Política de Privacidad')" class="hover:text-charanga-yellow transition-colors">Política de Privacidad</button>
+                    <button onclick="openLegalModal('Política de Cookies')" class="hover:text-charanga-yellow transition-colors">Política de Cookies</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         BOTÓN FLOTANTE DE WHATSAPP / INSTAGRAM
+    =========================================== -->
+    <!-- CAMBIAR EL NÚMERO 34600000000 POR VUESTRO WHATSAPP REAL -->
+    <a href="https://wa.me/34600000000?text=%C2%A1Hola%20Charanga%20%C3%9Altimo%20Acorde!%20Quer%C3%ADa%20pedir%20presupuesto%20para%20un%20evento."
+       target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"
+       class="fixed bottom-6 right-6 z-40 bg-charanga-yellow hover:bg-charanga-yellowHover text-charanga-black w-14 h-14 rounded-full shadow-glow border-2 border-charanga-black flex items-center justify-center text-3xl transition-transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ==========================================
+         MODAL LIGHTBOX PARA AMPLIAR FOTOS
+    =========================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-charanga-black/95 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
+        <button onclick="closeLightbox()" aria-label="Cerrar imagen" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-charanga-yellow text-charanga-black text-xl font-bold flex items-center justify-center">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Foto ampliada" class="w-full max-h-[80vh] object-contain rounded-2xl border-2 border-charanga-yellow shadow-2xl mx-auto">
+            <p id="lightbox-caption" class="mt-4 font-display text-xl tracking-wide text-charanga-yellow uppercase"></p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL TEXTOS LEGALES
+    =========================================== -->
+    <div id="legal-modal" class="fixed inset-0 z-50 hidden bg-charanga-black/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLegalModal()">
+        <div class="bg-charanga-card border-2 border-charanga-yellow rounded-2xl max-w-lg w-full p-6 sm:p-8 text-white" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                <h4 id="legal-title" class="font-display text-2xl text-charanga-yellow uppercase">Aviso Legal</h4>
+                <button onclick="closeLegalModal()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                Los datos enviados a través del formulario de contacto de <strong>Charanga Último Acorde</strong> se utilizan exclusivamente para responder a consultas de disponibilidad y presupuestos de actuaciones musicales, sin cederse a terceros.
+            </p>
+            <button onclick="closeLegalModal()" class="w-full py-3 rounded-xl bg-charanga-yellow text-charanga-black font-extrabold uppercase text-sm">Entendido</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT DE INTERACTIVIDAD
+    =========================================== -->
+    <script>
+        // 1. Control del Menú Móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+            } else {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Pestañas de filtrado en la sección Multimedia (Todo / Vídeos / Fotos)
+        function switchMediaTab(tab) {
+            const videosBlock = document.getElementById('media-videos-block');
+            const fotosBlock = document.getElementById('media-fotos-block');
+            const allTabs = document.querySelectorAll('.media-tab');
+
+            allTabs.forEach(btn => {
+                btn.classList.remove('bg-charanga-yellow', 'text-charanga-black', 'font-extrabold');
+                btn.classList.add('text-gray-300', 'font-bold');
+            });
+
+            const activeBtn = document.getElementById('tab-' + tab);
+            activeBtn.classList.remove('text-gray-300', 'font-bold');
+            activeBtn.classList.add('bg-charanga-yellow', 'text-charanga-black', 'font-extrabold');
+
+            if (tab === 'all') {
+                videosBlock.classList.remove('hidden');
+                fotosBlock.classList.remove('hidden');
+            } else if (tab === 'videos') {
+                videosBlock.classList.remove('hidden');
+                fotosBlock.classList.add('hidden');
+            } else if (tab === 'fotos') {
+                videosBlock.classList.add('hidden');
+                fotosBlock.classList.remove('hidden');
+            }
+        }
+
+        // 3. Lightbox para ampliar las fotografías
+        function openLightbox(imgUrl, captionText) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+
+            img.src = imgUrl;
+            caption.textContent = captionText;
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        // 4. Modal de textos legales
+        function openLegalModal(title) {
+            document.getElementById('legal-title').textContent = title;
+            document.getElementById('legal-modal').classList.remove('hidden');
+        }
+
+        function closeLegalModal() {
+            document.getElementById('legal-modal').classList.add('hidden');
+        }
+
+        // 5. Envío del formulario de contacto
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const evento = document.getElementById('evento').value || 'Evento por concretar';
+            const feedback = document.getElementById('form-feedback');
+
+            feedback.innerHTML = `¡Gracias, <strong>${nombre}</strong>! Hemos registrado tu solicitud para <em>${evento}</em>. También puedes escribirnos directamente por <a href="https://www.instagram.com/charanga_ultimoacorde" target="_blank" class="underline">Instagram (@charanga_ultimoacorde)</a> para respuesta inmediata.`;
+            feedback.classList.remove('hidden');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
